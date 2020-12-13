@@ -21,7 +21,7 @@ self.addEventListener('install', e => {
     );
 });
 
-self.addEventListener('activate', e => {
+/*self.addEventListener('activate', e => {
     const cacheWhitelist = [CACHE_NAME]
 
     e.waitUntil(
@@ -31,13 +31,9 @@ self.addEventListener('activate', e => {
             })
         }).then(() => self.clients.claim())
     );
-});
+});*/
 
 self.addEventListener('fetch', e => {
-    //set cache first
-    e.respondWith(
-        caches.match(e.request).then(function(response) {
-          return response || fetch(e.request);
-        })
-      );
+    //set cache only
+    e.respondWith(caches.match(e.request));
 });
