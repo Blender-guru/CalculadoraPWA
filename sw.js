@@ -14,6 +14,13 @@ urlsToCache=[
 
 self.addEventListener('install', e => {
     evt.waitUntil(
+        caches.open(CACHE_NAME).then((cache) => {
+          console.log('[ServiceWorker] Pre-caching offline page');
+          return cache.addAll(urlsToCache);
+        })
+    );
+
+    evt.waitUntil(
         caches.keys().then((keyList) => {
           return Promise.all(keyList.map((key) => {
             if (key !== CACHE_NAME) {
@@ -23,6 +30,16 @@ self.addEventListener('install', e => {
           }));
         })
     );
+    
+    //antiguo code con fallos, no funciona offline
+    /*e.waitUntil(
+        caches.open(CACHE_NAME)
+        .then(CACHE => {
+            return caches.addAll(urlsToCache)
+            .then(() => self.skipWaiting())
+        })
+        .catch(err => console.warn('Fallo registro de cache', err))
+    )*/
 });
 
 self.addEventListener('activate', e => {
