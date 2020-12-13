@@ -13,7 +13,7 @@ urlsToCache=[
 ]
 
 self.addEventListener('install', e => {
-    evt.waitUntil(
+    e.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
           console.log('Obteniendo pagina offline');
           return cache.addAll(urlsToCache);
@@ -34,14 +34,10 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
+    //set cache first
     e.respondWith(
-        caches.match(e.request)
-        .then(res => {
-            if(res)
-            {
-                return res
-            }
-            return fetch(e.request)
+        caches.match(e.request).then(function(response) {
+          return response || fetch(e.request);
         })
-    )
+      );
 });
