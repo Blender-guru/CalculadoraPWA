@@ -8,8 +8,7 @@ urlsToCache=[
     './img/favicon_io/favicon-32x32.png',
     './img/favicon_io/android-chrome-192x192.png',
     './img/favicon_io/android-chrome-512x512.png',
-    './img/favicon_io/apple-touch-icon.png',
-    './img/favicon_io/favicon-32x32.png'
+    './img/favicon_io/apple-touch-icon.png'
 ]
 
 self.addEventListener('install', e => {
