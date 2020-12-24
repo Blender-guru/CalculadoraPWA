@@ -21,7 +21,7 @@ self.addEventListener('install', e => {
     );
 });
 
-/*self.addEventListener('activate', e => {
+self.addEventListener('activate', e => {
     const cacheWhitelist = [CACHE_NAME]
 
     e.waitUntil(
@@ -31,7 +31,7 @@ self.addEventListener('install', e => {
             })
         }).then(() => self.clients.claim())
     );
-});*/
+});
 
 self.addEventListener('fetch', e => {
     //set cache only
