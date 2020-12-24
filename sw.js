@@ -1,5 +1,5 @@
 ; 
-const CACHE_NAME='v1_cache_calculadora_pwa',
+const CACHE_NAME='v0.1_cache_calculadora_pwa',
 urlsToCache=[
     './',
     'https://fonts.googleapis.com/css?family=Open+Sans&display=swap',
